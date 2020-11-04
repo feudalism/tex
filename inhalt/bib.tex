@@ -1,0 +1,61 @@
+\subsubsection{Einstellungen in der Präambel}
+Um die Literaturverzeichnis zu erstellen, muss man in der Präambel
+das Paket \texttt{biblatex} laden.
+Dazu sind die folgenden Optionen empfohlen.
+Ansonsten kann man in die \texttt{biblatex} Dokumentation
+anschauen.
+
+\begin{verbatim}
+\usepackage[backend=biber,
+    sorting=nty,
+    date=year,
+    sortcites=true,
+    ]{biblatex}
+\end{verbatim}
+
+\begin{center}
+\begin{tabu} to \textwidth{>{\ttfamily}X[l] X[4l]}
+	\toprule
+	sorting=nty	& sorts entries by name, title, year\\
+	date=year	& nur das Veröffentlichungsjahr wird gezeigt, und
+		nicht das vollständige Datum\\
+	sortcites=true	& obige \texttt{nty} Option wird umgesetzt\\
+	\bottomrule
+\end{tabu}
+\end{center}
+
+Die Informationen (Angaben zu Autor, Jahr, Titel, Auflage usw.)
+werden in einer \texttt{.bib} Datei aufbewahrt und müssten
+ebenfalls in der Präambel geladen werden.
+
+\begin{verbatim}
+\addbibresource{./preamble/ref.bib}
+\end{verbatim}
+	
+Man kann an dieser Stelle auch den Stil der Bibliographie einstellen.
+Z.B. nach APA, MLA, usw.
+\begin{verbatim}
+\input{./preamble/bibstyle}
+\end{verbatim}
+
+
+Ich habe bisher immer nach DIN 1505 zitiert
+und die Bibliographie erstellt.
+Der Code zum Bibliographiestil, den ich benutze,
+ist ursprünglich von Michael Domhardt.
+
+\subsubsection{Erstellung in der Hauptdatei}
+\begin{verbatim}
+\addsec{Quellen}
+%\nocite{*}						% prints uncited works
+\printbibliography[heading=none]
+\end{verbatim}
+
+\begin{center}
+\begin{tabu} to \textwidth{>{\ttfamily}X[l] X[4l]}
+	\toprule
+	addsec\{...\}	& Kapitelbenennung ohne Nummer, wird im Inhaltsverzeichnis angezeigt\\
+	nocite\{*\}		& falls unzitierte Werke auch aufgelistet werden sollen\\
+	\bottomrule
+\end{tabu}
+\end{center}

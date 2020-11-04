@@ -1,0 +1,25 @@
+% mathabx causes problem with ams... packages
+% solution: only load certain symbols instead of the whole package
+% https://tex.stackexchange.com/questions/14386/importing-a-single-symbol-from-a-different-font
+
+% Setup the matha font (from mathabx.sty)
+\DeclareFontFamily{U}{matha}{\hyphenchar\font45}
+\DeclareFontShape{U}{matha}{m}{n}{
+      <5> <6> <7> <8> <9> <10> gen * matha
+      <10.95> matha10 <12> <14.4> <17.28> <20.74> <24.88> matha12
+      }{}
+\DeclareSymbolFont{matha}{U}{matha}{m}{n}
+
+\DeclareFontFamily{U}{mathb}{\hyphenchar\font45}
+\DeclareFontShape{U}{mathb}{m}{n}{
+      <5> <6> <7> <8> <9> <10> gen * mathb
+      <10.95> mathb10 <12> <14.4> <17.28> <20.74> <24.88> mathb12
+      }{}
+\DeclareSymbolFont{mathb}{U}{mathb}{m}{n}
+
+% Define a subset character from that font (from mathabx.dcl)
+% to completely replace the \subset character, you can replace
+% \varsubset with \subset
+% \DeclareMathSymbol{\varsubset}{3}{matha}{"80}
+\DeclareMathSymbol{\corresponds}{3}{mathb}{"1D}
+\DeclareMathSymbol{\drsh}{3}{mathb}{"EB} 

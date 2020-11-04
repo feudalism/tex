@@ -1,0 +1,26 @@
+\documentclass[12pt]{scrartcl}
+	
+%% PREAMBLE
+	\input{./preamble/preamble}
+	\input{./preamble/macros}
+
+%% MAIN DOCUMENT
+\begin{document}
+	%% Front matter
+	\pagenumbering{roman}
+%	\include{./frontmatter/cover-center}
+	\include{./frontmatter/cover-right}
+	\include{./frontmatter/danksagung}
+	\include{./frontmatter/vorwort}
+	\include{./frontmatter/listof}	
+	\tableofcontents
+	
+	%% Main matter
+	\clearpage
+	\pagenumbering{arabic}
+	\include{./inhalt/content}
+	
+	%% Back matter
+	\include{./backmatter/bibliography}
+	\include{./backmatter/appendices}
+\end{document}

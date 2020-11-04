@@ -1,0 +1,256 @@
+\subsection{Beispieltext mit Fußnote}
+In diesem Abschnitt wird die nichtparametrische Systemidentifikation
+eingeführt.
+Es folgt die Motivation zur Berechnung im Frequenzbereich,
+insbesondere mittels der Fast-Fourier-Trans\-formation.
+Eine Annäherung von den Sinus-Signalen mithilfe
+der Curve Fitting Methode wird ebenfalls vorgestellt%
+\footnote{Dies ist eine Fußnote!}.
+
+\begin{verbatim}
+... ebenfalls vorgestellt%
+\footnote{Dies ist eine Fußnote!}.
+\end{verbatim}
+
+Schreibt man \verb|\footnote{...}| 
+auf einer neuen Zeile im Editor, wird im Text nach dem
+letzten Wort ein Leerzeichen erstellt.
+Um dies zu vermeiden, kann man am Ende der vorherigen Zeile
+\% hinschreiben.
+Dies unterdruckt jegliche ``whitespace character''
+bis zum Anfang der nächsten Zeile.\\
+
+\subsection{Listen}
+\begin{itemize}
+\item Item1
+\item Item2
+\end{itemize}~
+
+\begin{enumerate}
+\item Item1
+\item Item2
+\end{enumerate}~
+
+\begin{verbatim}
+\begin{itemize}
+\item Item1
+\item Item2
+\end{itemize}
+
+\begin{enumerate}
+\item Item1
+\item Item2
+\end{enumerate}
+\end{verbatim}
+
+Es gibt ein Paar Vorformatierungen die man in der Präambel durchführen kann, z.B. mithilfe des Pakets \texttt{enumitem}.
+\begin{verbatim}
+\usepackage{enumitem}
+\setlist{nolistsep}    % no spacing between list items
+\setlist[enumerate,1]
+		% list indentation
+		{labelindent=0.5cm,leftmargin=*}
+\end{verbatim}
+
+\subsection{Zitationen, Verweise}
+Hier mal eine Beispielzitation \cite{online:uppsala}.
+\begin{verbatim}
+Hier mal eine Beispielzitation \cite{online:uppsala}.\\
+\end{verbatim}~
+
+Und ein Verweis auf Kapitel \ref{ch:organisation}.
+	\begin{verbatim}
+	\section{Organisation}
+	\label{ch:organisation}
+	    ...
+	
+	\section{Beispiele}
+	    ....
+	    Und ein Verweis auf Kapitel \ref{ch:organisation}.
+	\end{verbatim}~
+
+\subsection{Formeln}
+\input{./inhalt/equations}
+
+\subsection{Abbildungen}
+Hier sieht man ein Beispielbild
+(Abbildung \ref{fig:bsp1}).
+
+\begin{verbatim}
+... Beispielbild (Abbildung \ref{fig:bsp1}).
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{unilogo}
+    \caption{Beispielabbildung}
+    \label{fig:bsp1}
+\end{figure}
+\end{verbatim}
+
+% [H] tells LaTeX to put the figure here,
+% if not, LaTeX may push the figure to a 'more optimal' location
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.6\textwidth]{unilogo}
+\caption{Beispielabbildung}
+\label{fig:bsp1}
+\end{figure}
+
+\subsection{Tabellen}
+Basic Tabellenaufbau mit dem \texttt{tabu}-Paket.
+Eine Beispieltabelle ist in Tabelle \ref{tab:fit-table} zu finden.
+\texttt{c} bedeutet, dass der Text in der Spalte zentriert ist.
+Alternativ kann man stattdessen \texttt{l} oder \texttt{r} schreiben
+(für Links- bzw. Rechtsausrichtung).
+
+\begin{verbatim}
+... ist in Tabelle \ref{tab:labelname} zu finden. ...\\
+
+\begin{table}[H]
+    \caption{Tabelle basic}
+    \label{tab:labelname}
+    \centering
+    \begin{tabu} to \textwidth{cccc}
+        \toprule
+        Col1 & Col2 & Col3 & Col4\\
+        \midrule
+        1 & 2 & 3 & 4\\
+        5 & 6 & 7 & 8\\
+        \bottomrule
+    \end{tabu}
+\end{table}
+\end{verbatim}
+
+\begin{table}[H]
+	\caption{Tabelle basic}
+	\label{tab:fit-table}
+	\centering
+	\begin{tabu} to \textwidth{cccc}
+		\toprule
+		Col1 & Col2 & Col3 & Col4\\
+		\midrule
+		1 & 2 & 3 & 4\\
+		5 & 6 & 7 & 8\\
+		\bottomrule
+	\end{tabu}
+\end{table}~
+
+
+
+Die obigen Tabelle \ref{tab:fit-table} hat Spaltenbreiten,
+die dem Inhalt angepasst sind.
+Um mehr Kontrolle über die Spaltenbreite zu haben, kann man 
+die sogenannten X-columns verwenden.
+Die folgende Tabelle \ref{tab:fullw-table} hat 
+gleichmäßig-verteilte Spalten über die gesamte Textfeldbreite.
+
+\begin{verbatim}
+\begin{tabu} to \textwidth{X[c] X[c] X[c] X[c]}
+    ....
+\end{table}
+\end{verbatim}
+
+\begin{table}[H]
+	\caption{Tabelle über voller Textlänge}
+	\label{tab:fullw-table}
+	\centering
+	\begin{tabu} to \textwidth{X[c] X[c] X[c] X[c]}
+		\toprule
+		Col1 & Col2 & Col3 & Col4\\
+		\midrule
+		1 & 2 & 3 & 4\\
+		5 & 6 & 7 & 8\\
+		\bottomrule
+	\end{tabu}
+\end{table}~
+
+
+
+Die Angabe \verb|\textwidth| kann auch z.B. zu \verb|0.6\textwidth|
+umgeschrieben werden, um die Tabellenbreite zu beschränken.
+
+\begin{verbatim}
+\begin{tabu} to 0.6\textwidth{X[r] X[r] X[r] X[r]}
+     ...
+\end{verbatim}
+
+\begin{table}[H]
+	\caption{Tabelle über 60\% Textlänge}
+	\label{tab:partial-table}
+	\centering
+	\begin{tabu} to 0.6\textwidth{X[r] X[r] X[r] X[r]}
+		\toprule
+		Col1 & Col2 & Col3 & Col4\\
+		\midrule
+		1 & 2 & 3 & 4\\
+		5 & 6 & 7 & 8\\
+		\bottomrule
+	\end{tabu}
+\end{table}~
+
+
+
+Bisher hatten die Spalten alle die gleiche Breite.
+Um z.B. die Breiten im Verhältnis 3:3:1:1 darzustellen, verwende
+\begin{verbatim}
+\begin{tabu} to 0.6\textwidth{X[3c] X[3c] X[1c] X[1c]}
+    ...
+\end{verbatim}
+
+\begin{table}[H]
+	\caption{Tabelle mit variablen Spaltenbreite}
+	\label{tab:var-colw-table}
+	\centering
+	\begin{tabu} to 0.6\textwidth{X[3c] X[3c] X[1c] X[1c]}
+		\toprule
+		Col1 & Col2 & Col3 & Col4\\
+		\midrule
+		1 & 2 & 3 & 4\\
+		5 & 6 & 7 & 8\\
+		\bottomrule
+	\end{tabu}
+\end{table}~
+
+
+
+\begin{verbatim}
+\begin{tabu} to \textwidth{+l^r^r^r}
+    \rowstyle{\bfseries}
+    % Inhalt der ersten Zeile
+    Col1 & Col2 & Col3 & Col4\\
+    ...
+\end{verbatim}
+
+\begin{table}[H]
+	\caption{Tabelle mit fetten Überschriften (Zeile)}
+	\label{tab:bold-table-row}
+	\centering
+	\begin{tabu} to \textwidth{+l^r^r^r}
+		\toprule
+		\rowstyle{\bfseries}
+		Col1 & Col2 & Col3 & Col4\\
+		\midrule
+		1 & 2 & 3 & 4\\
+		5 & 6 & 7 & 8\\
+		\bottomrule
+	\end{tabu}
+\end{table}~
+
+
+
+\begin{verbatim}
+\begin{tabu} to \textwidth{*l|rrr}
+    ...
+\end{verbatim}
+
+
+\begin{table}[H]
+	\caption{Tabelle mit fetten Überschriften (Spalte)}
+	\label{tab:bold-table-col}
+	\centering
+	\begin{tabu} to \textwidth{*l|rrr}
+		H1 & 11 & 21 & 31\\
+		H2 & 2 & 3 & 4\\
+		H3 & 6 & 7 & 8\\
+	\end{tabu}
+\end{table}

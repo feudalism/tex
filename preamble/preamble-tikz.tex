@@ -1,0 +1,50 @@
+\usetikzlibrary{shapes,positioning,patterns,
+					calc,fit,backgrounds,arrows.meta,
+	                 decorations.pathmorphing,
+	                 decorations.markings}
+	
+% % Arrows
+\tikzset{
+	arrow/.style={draw,-{Latex[length=2.5mm]}},
+	vectline/.style={arrow,line width=1.8pt},		
+	force/.style={line width=2pt,red,arrow},
+		}
+	
+% % Control blocks
+\tikzset{
+	block/.style={shape=rectangle,draw,semithick,
+		inner sep=2mm,minimum width=0.5cm,
+		text width=1cm,
+		align=flush center},
+	note/.style={
+		align=flush center
+		},
+	comp/.style={shape=circle,inner sep=0mm,
+		minimum size=4mm,draw,semithick},
+	cout/.style={shape=circle,inner sep=0mm,
+		minimum size=1.5mm,fill=black,draw},
+	ground/.style={fill,pattern=north east lines,minimum width=7pt,
+					minimum height=14pt,inner sep=0pt},
+	 }
+
+
+\newcommand{\classDate}[1]{
+\tikzset{external/export next=false}
+\begin{tikzpicture}[overlay,font=\tiny,align=left,
+	xshift={-1.5em},yshift={-1em}]
+	\node (date) [date] {};
+	\node at (date.center) [text=black!70!white] {\scshape\bfseries #1};
+\end{tikzpicture}
+}
+
+\makeatletter
+\newcommand{\DrawLine}[1]{%
+\tikzset{external/export next=false}
+  \begin{tikzpicture}
+  \path[use as bounding box] (0,0) -- (\linewidth,-0.2);
+  \draw[color=black,dashed,dash phase=2pt,#1]
+        (0-\kvtcb@leftlower-\kvtcb@boxsep,0)--
+        (\linewidth+\kvtcb@rightlower+\kvtcb@boxsep,0);
+  \end{tikzpicture}%
+  }
+\makeatother

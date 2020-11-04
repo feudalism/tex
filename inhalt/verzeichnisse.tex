@@ -1,0 +1,30 @@
+Für die Abbildungs- und Tabellenverzeichnisse habe ich irgendwoher
+mal den Code kopiert... Er ist zweiteilig:
+\begin{enumerate}
+	\item Formatierung in der Präambel
+	\item Eigentliche Platzierung vor dem Inhaltsverzeichnis
+\end{enumerate}~
+
+In der Präambel:
+\begin{verbatim}
+\usepackage[titles]{tocloft}
+\newlength{\figlength}
+\renewcommand{\cftfigpresnum}{\figurename\enspace}
+\renewcommand{\cftfigaftersnum}{:\enspace}
+\settowidth{\figlength}{\cftfigpresnum\cftfigaftersnum}
+\addtolength{\cftfignumwidth}{\figlength}
+
+\newlength{\tablength}
+\renewcommand{\cfttabpresnum}{\tablename\enspace}
+\renewcommand{\cfttabaftersnum}{:}
+\settowidth{\tablength}{\cfttabpresnum\cfttabaftersnum}
+\addtolength{\cfttabnumwidth}{\tablength}
+\end{verbatim}
+
+Im Dokumententeil (\texttt{listof.tex}):
+\begin{verbatim}
+\addsec{Abbildungsverzeichnis}
+\makeatletter
+\@starttoc{lof}% Print List of Figures
+\makeatother
+\end{verbatim}

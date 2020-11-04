@@ -1,0 +1,31 @@
+\begin{verbatim}
+\addsec{Anhang}
+\setcounter{subsection}{0}
+\renewcommand\thesubsection{A\the\value{subsection}}
+\end{verbatim}
+
+Hier wurde manuell das Format der Kapitelüberschrift eingestellt,
+da das Format, das ich will, nicht default vorhanden ist.
+Ich wollte, dass ``Anhang'' unnummeriert im Inhaltsverzeichnis erscheint,
+und dass die einzelnen Anhänge anhand A1, A2, ... durchnummeriert werden.
+
+\begin{center}
+\begin{tabu} to \textwidth{>{\ttfamily}X[l] X[4l]}
+	\toprule
+	addsec	& Kapitelüberschrift ohne Nummber, wird im Inhaltsverzeichnis angezeigt\\
+	setcounter	& Setzt die Nummerierung von subsection zurück,
+		sonst wird die Nummerierung vom Vorkapitel fortgesetzt.\\
+	\bottomrule
+\end{tabu}
+\end{center}
+
+Danach wie gewohnt die einzelnen Kapiteln erstellen.
+
+\begin{verbatim}
+\subsection{Erster Anhang}
+    ...
+    
+\clearpage
+\subsection{Zweiter Anhang}
+    ...
+\end{verbatim}
