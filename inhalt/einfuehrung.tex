@@ -1,0 +1,45 @@
+\section{Einführung}
+Text with quotes: "quote2" \cite{book:weck-wzm3}.
+
+\subsection{Abbildungen}
+Verweis auf Abbildung \ref{fig:logo}.\\
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{unilogo}
+    \caption{Uni Stuttgart logo}
+    \label{fig:logo}
+\end{figure}
+
+\subsection{Listen}
+Hier ist eine Liste, nach \cite{online:uppsala}:
+\begin{itemize}
+    \item Item1
+    \item Item2
+\end{itemize}~
+
+\subsection{Tabellen}
+Auch eine Tabelle ist dabei (s. Tabelle \ref{tab:ex_table}).
+
+\begin{table}[H]
+\centering
+\begin{tabu} to 0.5\textwidth {+X[c] ^X[c]}
+    \toprule
+    \rowstyle{\bfseries}
+    Head1 & Head2\\
+    \midrule
+    Left & Right\\
+    North & South\\
+    \bottomrule
+\end{tabu}
+\caption{Beispiel einer Tabelle}
+\label{tab:ex_table}
+\end{table}
+
+\subsection{Formeln}
+%Verweis auf Gleichung (\ref{eq:ex_gl}).
+Verweis auf Gleichung \eqn{eq:ex_gl}.
+\begin{align}
+    \int_0^{100} y ~ dx &= 50 + c
+    \label{eq:ex_gl}
+\end{align}
