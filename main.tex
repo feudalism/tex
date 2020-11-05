@@ -3,11 +3,54 @@
     twoside,
     ]{scrartcl}
 
-%% PREAMBLE
     \input{preamble/preamble}
+    \input{preamble/macros}
 
 \begin{document}
-    Text with quotes: "quote2"\\
+    %% Front matter
+    \pagenumbering{roman}
+    \include{frontmatter/cover}
+    \include{frontmatter/danksagung}
+    \include{frontmatter/listof}
+
+    \clearpage
+    \pagenumbering{arabic}
+    \section{Einführung}
+    Text with quotes: "quote2".
+    Verweis auf Abbildung \ref{fig:logo}.\\
+
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.5\textwidth]{unilogo}
+        \caption{Uni Stuttgart logo}
+        \label{fig:logo}
+    \end{figure}
+
+    Hier ist eine Liste:
+    \begin{itemize}
+        \item Item1
+        \item Item2
+    \end{itemize}~
+
+    Auch eine Tabelle ist dabei (s. Tabelle \ref{tab:ex_table}).
+
+\begin{table}[H]
+    \centering
+    \begin{tabu} to 0.5\textwidth {+X[c] ^X[c]}
+        \toprule
+        \rowstyle{\bfseries}
+        Head1 & Head2\\
+        \midrule
+        Left & Right\\
+        North & South\\
+        \bottomrule
+    \end{tabu}
+\caption{Beispiel einer Tabelle}
+\label{tab:ex_table}
+\end{table}
+    
+    Dann noch dummy text.
+    \lipsum
 
     \lipsum
 \end{document}

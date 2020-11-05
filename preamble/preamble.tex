@@ -34,11 +34,110 @@
 
 %% MARGINS
 % Show page margin lines
-\usepackage{showframe}
+%\usepackage{showframe}
+
+% Set margins
 \usepackage[
     top=2.5cm,
     bottom=2.5cm,
     left=2.5cm,
     right=2.5cm,
     bindingoffset=8mm,
+    headheight=20.5pt,
+    headsep=0.75cm,
     ]{geometry}
+
+% Remove paragraph indentation
+\setlength{\parindent}{0pt}
+
+%% HEADERS/FOOTERS
+\usepackage[automark]{scrlayer-scrpage}
+\setkomafont{pagehead}{\normalfont}
+
+% Remove number from chapter title in header
+\renewcommand\sectionmarkformat{}
+
+% Header on even pages
+\lehead{Seite \pagemark}
+\rehead{\leftmark}
+
+% Header on odd pages
+\lohead[\leftmark]{\leftmark}
+\rohead[Seite \pagemark]{Seite \pagemark}
+
+% No page number in footer
+\ofoot[]{}
+
+% Underline
+\KOMAoptions{headsepline=true}
+
+%% MATH
+% Math functions and symbols
+\usepackage{amsmath}
+
+%% GRAPHICS
+% Enables includegraphics
+\usepackage{graphicx}
+
+% Forces position float elements (e.g. tables, figures)
+\usepackage{float}
+
+% Sets graphics path (folder)
+\graphicspath{
+    {./img/}
+    }
+
+%% TABLES
+% Pretty tables
+\usepackage{tabu}
+\usepackage{booktabs}
+
+% Allows persistent style across a row
+\newcolumntype{+}{>{\global\let\currentrowstyle\relax}}
+\newcolumntype{^}{>{\currentrowstyle}}
+\newcommand{\rowstyle}[1]{\gdef\currentrowstyle{#1}#1\ignorespaces}
+
+%% LISTS
+\usepackage{enumitem}
+
+% spacing between list items
+\setlist{nolistsep}
+
+%% TABLE OF STUFF
+\usepackage[titles]{tocloft}
+    \newlength{\figlength}
+    % Insert word 'Abbildung' or 'Figure'
+    \renewcommand{\cftfigpresnum}{\figurename\enspace}
+    % Insert colon
+    \renewcommand{\cftfigaftersnum}{:\enspace}
+    % Start printing caption after the colon
+    \settowidth{\figlength}{\cftfigpresnum\cftfigaftersnum}
+    \addtolength{\cftfignumwidth}{\figlength}
+    
+    \newlength{\tablength}
+    % Insert word 'Tabelle' or 'Table'
+    \renewcommand{\cfttabpresnum}{\tablename\enspace}
+    % Insert colon
+    \renewcommand{\cfttabaftersnum}{:\enspace}
+    % Start printing caption after the colon
+    \settowidth{\tablength}{\cfttabpresnum\cfttabaftersnum}
+    \addtolength{\cfttabnumwidth}{\tablength}
+
+%% CITATIONS/BIBLIOGRAPHY
+\usepackage[backend=biber]{biblatex}
+\addbibresource{preamble/ref}
+
+% Zitierrichtlinie nach DIN 1505
+\input{preamble/bibstyle}
+
+%% DOCUMENT PROPERTIES
+% Enable hyperlinks in PDF
+\usepackage{hyperref}
+\hypersetup{
+    pdftitle = {Studienarbeit},
+    pdfauthor = {TS},
+    colorlinks,
+    linkcolor={red},
+    citecolor={red},
+    urlcolor={red},
+}
