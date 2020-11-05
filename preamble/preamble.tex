@@ -1,209 +1,44 @@
-% LANGUAGE / TYPESETTING
-	%% Set the document language
-	\usepackage[ngerman]{babel}
-	
-	%% Input of special characters e.g. áüó
-	% Must be loaded before csquotes
-	\usepackage[utf8]{inputenc}
+%% DUMMY TEXT
+\usepackage{lipsum}
 
-	%% Glyph adjust,
-	% e.g. allows the characters 'äúö' etc.
-	% to be correctly copied from PDF.
-	% If not loaded, 'auo' would be copied.
-	% However, fontenc unsmoothes the default serif font
-	%	(workaround: load a serif font package,
-	%	e.g. lmodern or mathpazo)
-	\usepackage[T1]{fontenc}
+%% LANGUAGE/TYPESETTING
+% Set the document language
+\usepackage[ngerman]{babel}
 
+% Input of special characters, e.g. umlauts
+% load this first if using the csquotes packages
+\usepackage[utf8]{inputenc}
 
-	%% Enables quotes to be typed as " " instead of `` ''	
-	\usepackage[autostyle=true]{csquotes}	
-	\MakeOuterQuote{"}
-	
-	%% Font selection
-	% If serif font, choose one or more from:
-%	\addtokomafont{disposition}{\rmfamily} % headings
-%	\usepackage{lmodern} 		% (only text)
-%	\usepackage[osf]{mathpazo} 	% (text and math)
-%	\usepackage{eulervm}		% (only math)
-	% If sans serif:
-    \usepackage{helvet}
- 	\renewcommand{\familydefault}{\sfdefault}	% (only text)
+% Glyph adjust (allows correct copying of special
+% characters from the PDF file
+\usepackage[T1]{fontenc}
 
-    % Scales default interline space to 1.5 of default value
-    \renewcommand{\baselinestretch}{1.5}
-	
-	%% No widows (only one line at the start of a page)
-	%  and no orphans (first line of paragraph at the end of a page)
-	\widowpenalty10000						% No widows
-	\clubpenalty10000						% No orphans
-	
-	
-% MARGINS
-	%% Set page margins
-    \usepackage{showframe}
-	\usepackage[top=2.5cm,bottom=2.5cm,
-				left=2.5cm,right=2.5cm,
-				bindingoffset=8mm,
-				%showframe, % construction lines
-				footskip=0.5cm, % footer/page.num. position
-				]{geometry}	
-										
-	%% Removes paragraph indentation
-	\setlength{\parindent}{0pt}
+% Enables input of quotes using " "
+\usepackage[autostyle=true,german=guillemets]{csquotes}
+\MakeOuterQuote{"}
 
-	
-% HEADER / FOOTER
-	% Clear header and footer before setting new ones!
-	
-	%% Clears header footer
-	\usepackage{scrlayer-scrpage}
-	\clearscrheadfoot
-	
-	%% Sets header									
-%	\rohead[]{}		
+% No widows (last line of paragraph on a new page)
+\widowpenalty10000
 
+% No orphans (first line of paragraph on the final line of a page)
+\clubpenalty10000
 
-% Space before footnote line
-	\let\svfootnoterule\footnoterule
-	\renewcommand\footnoterule{\vspace{1cm}\svfootnoterule}	
-	
-	%% Sets footer	
-	% Right hand side, odd pages if double-sided print,
-	% 	all pages for single-sided	
-	\rofoot{\footnotesize{\thepage}}			
-				
-				
-% MATH
-	%% Required for some math functions and symbols
-	\usepackage{amsmath}
-%	\usepackage{amssymb}
+%% FONTS
+% Arial
+\usepackage{helvet}
+\renewcommand{\familydefault}{\sfdefault}
 
-	%% Equation 1.1, 1.2, 2.1, ... instead of
-	%  eqn 1, 2, 3, ...
-%	\numberwithin{equation}{section}
+%% SPACING
+% Set default interline space to 1.5 * default value
+\renewcommand{\baselinestretch}{1.5}
 
-	%% SI units
-%	\usepackage{siunitx}
-%		\sisetup{
-%			tight-spacing           = true,
-%			round-mode              = places,
-%	        round-precision         = 2,
-%			table-align-text-pre	= false,
-%			output-decimal-marker   = {,},
-%			group-separator 	    = {.},
-%			}
-
-	%% Sets equation number of a line within
-	%  a starred equation environment
-%	\newcommand\numberthis{\addtocounter{equation}{1}\tag{\theequation}}
-
-
-% GRAPHICS
-	%% Enables icludegraphics
-	\usepackage{graphicx}
-	
-	%% Subfigures, i.e. Figure 1a, 1b				
-	\usepackage{subcaption}
-
-	%% Sets caption format to bold
-	\usepackage[labelfont=bf]{caption}	% Caption format
-
-	%% Forces position of floats (e.g. tables, figures)
-	\usepackage{float}					% Position of floats
-	
-	%% Sets path (folder) for graphics so that
-	%  the folder doesn't have to be typed in
-	%  in the \includegraphics command
-	\graphicspath{	{./img/}
-					}	
-			
-	%% Tikz package to generate graphics		
-%	\usepackage{tikz}
-
-
-% TABLES
-	%% Prettier table compared to default
-	\usepackage{tabu}
-	\usepackage{booktabs}
-
-	%% Enables rows spanning multiple lines
-%	\usepackage{multirow}	
-	
-	%% For tables that go beyond one page
-%%	\usepackage{longtable}
-
-	%% Row style - allows the same style in a column
-	%	to be applied across all rows
-	% 	requires the array package
-	\newcolumntype{+}{>{\global\let\currentrowstyle\relax}} 
-	\newcolumntype{^}{>{\currentrowstyle}}
-	\newcolumntype{*}{>{\bfseries}}
-	\newcommand{\rowstyle}[1]{\gdef\currentrowstyle{#1}%
-	  #1\ignorespaces}
-	  
-	  
-% LISTS
-	%% Adjusts indentation, etc in lists
-	\usepackage{enumitem}
-		% spacing b/w list items
-		\setlist{nolistsep}	
-		\setlist[enumerate,1]
-				% list indentation
-				{labelindent=0.5cm,leftmargin=*}
-				
-				
-% TABLE OF STUFF
-	%% Sets the style for the list of tables/figures
-	\usepackage[titles]{tocloft}
-		\newlength{\figlength}
-		\renewcommand{\cftfigpresnum}{\figurename\enspace}
-		\renewcommand{\cftfigaftersnum}{:\enspace}
-		\settowidth{\figlength}{\cftfigpresnum\cftfigaftersnum}
-		\addtolength{\cftfignumwidth}{\figlength}
-		
-		\newlength{\tablength}
-		\renewcommand{\cfttabpresnum}{\tablename\enspace}
-		\renewcommand{\cfttabaftersnum}{:}
-		\settowidth{\tablength}{\cfttabpresnum\cfttabaftersnum}
-		\addtolength{\cfttabnumwidth}{\tablength}
-	
-	
-% CITATIONS / BIBLIOGRAPHY
-	%% Citation package
-	\usepackage[maxcitenames=10,
-				backend=biber,
-				sorting=nty,
-				date=year,
-				sortcites=true,
-				]{biblatex}
-				
-	%% List of references
-	\addbibresource{./preamble/ref.bib}
-	
-	%% Bibliography style -- here based on
-	%  Zitierrichtlinie nach DIN 1505
-	\input{./preamble/bibstyle}
-	
-	%% URL font: rmfamily for serif, , sffamily for sans serif
-	\renewcommand{\UrlFont}{\rmfamily\footnotesize}
-	
-	
-% DOCUMENT PROPERTIES
-	%% Enables hyperlinks in PDF
-	\usepackage{hyperref}
-	
-	\hypersetup{	pdftitle = {Erstellung einer studentischen Arbeit},
-			pdfauthor = {Salehah},
-			% Default zoom for PDF
-			pdfstartview = {XYZ null null 1.0},
-			% Make headings into bookmarks
-			bookmarksnumbered = true,
-			% Open bookmarks panel when PDF is opened
-			bookmarksopen = true,
-			% Make links coloured
-			colorlinks,
-			linkcolor={blue},
-			citecolor={blue},
-			urlcolor={red},
-			}
+%% MARGINS
+% Show page margin lines
+\usepackage{showframe}
+\usepackage[
+    top=2.5cm,
+    bottom=2.5cm,
+    left=2.5cm,
+    right=2.5cm,
+    bindingoffset=8mm,
+    ]{geometry}
