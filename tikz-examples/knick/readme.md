@@ -1,2 +1,2 @@
 # knick 
-![Knick](knick/knick.PNG)
+![Knick](knick.PNG)
