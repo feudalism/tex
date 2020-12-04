@@ -2,4 +2,4 @@
 ![Knick](knick/knick.PNG)
 
 [Permittivität / Verlustfaktor Plots](perm-verl-plots)  
-![](perm-verl-plots.png)
+![](perm-verl-plots/perm-verl-plots.png)
