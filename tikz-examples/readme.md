@@ -1,2 +1,6 @@
 # knick
-![Knick](knick.PNG)
+[Blockschaltbild mit geknicktem Pfeil](knick)
+![Knick](knick/knick.PNG)
+
+# Permittivität / Verlustfaktor Plots
+tbd.
