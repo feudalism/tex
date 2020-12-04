@@ -1,0 +1,23 @@
+\documentclass{scrartcl}
+
+\usepackage{graphicx}
+\graphicspath{	{./img/}  }
+\usepackage{xcolor}
+
+\newcommand{\inkscape}[3][1]{
+% usage: \inkscape[options]{filename}{percent of text width}
+        \def\svgwidth{#3\columnwidth}
+        { \footnotesize #1
+        \input{./#2.pdf_tex}
+        }
+    }
+\begin{document}
+
+\begin{figure}
+\centering
+\inkscape[]{img/kondensator}{0.5}
+\label{fig:kondensator}
+\caption{Kondensator}
+\end{figure}
+
+\end{document}

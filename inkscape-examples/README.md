@@ -1,0 +1,2 @@
+# Kondensator
+![](kondensator.png)
