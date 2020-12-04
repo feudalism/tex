@@ -1,0 +1,36 @@
+\documentclass{scrartcl}
+\input{preamble}
+
+\begin{document}
+
+3399.5\\
+
+\begin{tikzpicture}
+    \begin{axis}[
+        title={Permittivität},
+        xmin=20, xmax=120,
+        ymin=0, ymax=30,
+        ]
+        \permplot{3399.5_pe_hd10.csv}
+        \permplot{3399.5_pe_hd15.csv}
+        \permplot{3399.5_pe_hd20.csv}
+        \permplot{3399.5_pe_hd30.csv}
+    \end{axis}
+\end{tikzpicture}
+
+\vspace{2cm}
+
+\begin{tikzpicture}
+    \begin{axis}[
+        title={Verlustfaktor},
+        xmin=20, xmax=120,
+        ymax=200,
+        ]
+        \verlplot{3399.5_pe_hd10.csv}
+        \verlplot{3399.5_pe_hd15.csv}
+        \verlplot{3399.5_pe_hd20.csv}
+        \verlplot{3399.5_pe_hd30.csv}
+    \end{axis}
+\end{tikzpicture}
+
+\end{document}

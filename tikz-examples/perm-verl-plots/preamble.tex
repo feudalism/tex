@@ -1,0 +1,45 @@
+\usepackage{tikz}
+\usepackage{pgfplots}
+\pgfplotscreateplotcyclelist{plotcolours}{
+    blue\\
+    orange!70!red\\
+    green!40!gray\\
+    yellow!40!orange\\
+}
+
+\pgfplotsset{compat=1.17,
+    every axis/.append style={
+        at={(0,0)},
+        anchor=south west,
+        xlabel=Temperatur,
+        legend entries={PE-HD10, PE-HD15, PE-HD20, PE-HD30},
+        cycle list name=plotcolours,
+        },
+    every axis legend/.append style={
+        anchor=north west,
+        legend pos=outer north east,
+        },
+}
+
+\newcommand{\permplot}[1]{
+    \addplot+ [
+        smooth,
+        mark=*,
+        error bars/.cd,
+            y dir=both, y explicit,
+            x dir=both, x fixed=0
+        ]
+    table [x=temp, y=perm, y error=perm_err, col sep=comma]
+        {#1};
+}
+\newcommand{\verlplot}[1]{
+    \addplot+ [
+        smooth,
+        mark=*,
+        error bars/.cd,
+            y dir=both, y explicit,
+            x dir=both, x fixed=0
+        ]
+    table [x=temp, y=verl, y error=verl_err, col sep=comma]
+        {#1};
+}
