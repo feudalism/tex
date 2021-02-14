@@ -2,95 +2,113 @@
 \usepackage{lipsum}
 
 %% LANGUAGE/TYPESETTING
-% Set the document language
-\usepackage[ngerman]{babel}
+\usepackage[ngerman, UKenglish]{babel}
 
 % Input of special characters, e.g. umlauts
 % load this first if using the csquotes packages
 \usepackage[utf8]{inputenc}
-
 % Glyph adjust (allows correct copying of special
 % characters from the PDF file
-\usepackage[T1]{fontenc}
-
+\usepackage[OT1, T1]{fontenc}
 % Enables input of quotes using " "
-\usepackage[autostyle=true,german=guillemets]{csquotes}
+\usepackage[autostyle=true,
+    %german=guillemets
+]{csquotes}
 \MakeOuterQuote{"}
-
 % No widows (last line of paragraph on a new page)
 \widowpenalty10000
-
 % No orphans (first line of paragraph on the final line of a page)
 \clubpenalty10000
 
 %% FONTS
-% Arial
-\usepackage{helvet}
-\renewcommand{\familydefault}{\sfdefault}
+% Coding font
+\usepackage[scaled=0.75]{beramono}
+
+% Sans serif
+%\renewcommand{\familydefault}{\sfdefault}
+
+% Serif math/tex
+\addtokomafont{sectioning}{\rmfamily}
+\usepackage[osf]{mathpazo}
+
+% Captions
+\addtokomafont{caption}{\small}
 
 %% SPACING
+\usepackage[letterspace=60]{microtype}
 % Set default interline space to 1.5 * default value
-\renewcommand{\baselinestretch}{1.5}
+%\renewcommand{\baselinestretch}{1.5}
 
 %% MARGINS
 % Show page margin lines
 %\usepackage{showframe}
 
 % Set margins
-\usepackage[
-    top=2.5cm,
-    bottom=2.5cm,
-    left=2.5cm,
-    right=2.5cm,
-    bindingoffset=8mm,
-    headheight=20.5pt,
-    headsep=0.75cm,
-    ]{geometry}
+%\usepackage[
+%    top=2.5cm,
+%    bottom=2.5cm,
+%    left=2.5cm,
+%    right=2.5cm,
+%    bindingoffset=8mm,
+%    headheight=20.5pt,
+%    headsep=0.75cm,
+%    ]{geometry}
 
-% Remove paragraph indentation
 \setlength{\parindent}{0pt}
+\setlength\textheight{23cm}
+\setlength\headsep{30pt}
 
 %% HEADERS/FOOTERS
-\usepackage[automark]{scrlayer-scrpage}
-\setkomafont{pagehead}{\normalfont}
+\addtokomafont{disposition}{\color{black!60!gray}}
+\usepackage[automark, markcase=lower]{scrlayer-scrpage}
+\setkomafont{pagehead}{\scshape\lsstyle\color{gray!50!black}}
+\lehead[]{\leftmark}
 
-% Remove number from chapter title in header
-\renewcommand\sectionmarkformat{}
+% Empty header at chapter start
+\renewcommand*{\chapterpagestyle}{plain}
+\renewcommand*{\chaptermarkformat}{\thechapter\autodot\enskip}
 
-% Header on even pages
-\lehead{Seite \pagemark}
-\rehead{\leftmark}
-
-% Header on odd pages
-\lohead[\leftmark]{\leftmark}
-\rohead[Seite \pagemark]{Seite \pagemark}
-
-% No page number in footer
-\ofoot[]{}
-
-% Underline
-\KOMAoptions{headsepline=true}
+% Default page style for begin
+\pagestyle{empty}
 
 %% MATH
 % Math functions and symbols
 \usepackage{amsmath}
 
+% Prevents too many alphabets error
+\newcommand\hmmax{0}
+\newcommand\bmmax{0}    
+\usepackage{bm}
+
+\usepackage{siunitx}
+\sisetup{
+    tight-spacing           = true,
+    round-mode              = places,
+    round-precision         = 2,
+    table-align-text-pre    = false,
+    output-decimal-marker   = {.},
+    group-separator         = { },
+}
+\newcommand\numberthis{\addtocounter{equation}{1}\tag{\theequation}}
+
 %% GRAPHICS
-% Enables includegraphics
 \usepackage{graphicx}
-
-% Forces position float elements (e.g. tables, figures)
-\usepackage{float}
-
-% Sets graphics path (folder)
 \graphicspath{
     {./img/}
     }
+\usepackage{float}
+\usepackage[labelfont=sc]{caption}
+\usepackage[table]{xcolor}
+\usepackage{subcaption}
+\usepackage{tikz}
+\usepackage{pgfplots}
 
 %% TABLES
 % Pretty tables
 \usepackage{tabu}
+\usepackage{longtable}
 \usepackage{booktabs}
+\usepackage{multirow}
 
 % Allows persistent style across a row
 \newcolumntype{+}{>{\global\let\currentrowstyle\relax}}
@@ -102,6 +120,10 @@
 
 % spacing between list items
 \setlist{nolistsep}
+\setlist[enumerate,1]
+    % lsit indendation
+    {labelindent=0.5cm, leftmargin=1.2cm}
+\renewcommand{\labelenumi}{(\roman{enumi})}
 
 %% TABLE OF STUFF
 \usepackage[titles]{tocloft}
@@ -124,18 +146,21 @@
     \addtolength{\cfttabnumwidth}{\tablength}
 
 %% CITATIONS/BIBLIOGRAPHY
-\usepackage[backend=biber]{biblatex}
+\usepackage[backend=biber,
+    maxcitenames=10,
+    sorting=nty,
+    date=year,
+    sortcites=true,
+    giveninits]{biblatex}
 \addbibresource{preamble/ref.bib}
-
-% Zitierrichtlinie nach DIN 1505
 \input{preamble/bibstyle}
 
 %% DOCUMENT PROPERTIES
 % Enable hyperlinks in PDF
 \usepackage{hyperref}
 \hypersetup{
-    pdftitle = {Studienarbeit},
-    pdfauthor = {TS},
+    pdftitle = {Title},
+    pdfauthor = {Author},
     colorlinks,
     linkcolor={red},
     citecolor={red},

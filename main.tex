@@ -1,12 +1,24 @@
 \documentclass[
     11pt,
     twoside,
-    ]{scrartcl}
+    open=right,
+    DIV=12,
+    BCOR=8mm,
+    listof=totoc,
+    bibliography=totoc,
+    chapterprefix,
+    numbers=noenddot,
+    clearodublepage=empty,
+    captions=tableheading,
+    captions=nooneline
+    ]{scrbook}
 
     \input{preamble/preamble}
     \input{preamble/macros}
 
 \begin{document}
+    \selectlanguage{UKenglish}
+
     %% Front matter
     \include{frontmatter/cover}
     \include{frontmatter/danksagung}
@@ -19,8 +31,8 @@
     %% Main matter
     \cleardoublepage
     \pagenumbering{arabic}
-    \include{inhalt/einfuehrung}
-    \include{inhalt/dummy}    
+    \pagestyle{scrheadings}
+    \include{pages/chap1}
 
     %% Back matter
     \include{backmatter/bibliography}
